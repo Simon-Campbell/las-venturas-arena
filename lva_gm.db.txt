@@ -1,0 +1,84 @@
+// This file contains the database structure in
+// lva_gm.db. It also contains some commands I
+// have used for upgrades to give you an idea
+// of how to update your own database to support
+// extras.
+
+//========================================
+//	lva_gm.db
+//========================================
+
+
+CREATE TABLE lva_users(
+	userid integer primary key,
+	name text,
+	password text,
+	level integer,
+	register integer,
+	registerip text,
+	email text,
+	kills integer,
+	deaths integer,
+	bank integer,
+	bounty integer default 0,
+	playtime integer,
+	banned integer,
+	mute integer default 0,
+	unbandate integer,
+	weapon_0 integer default 0,
+	weapon_1 integer default 0,
+	weapon_2 integer default 0,
+	weapon_3 integer default 0,
+	weapon_4 integer default 0,
+	weapon_5 integer default 0,
+	weapon_6 integer default 0,
+	weapon_7 integer default 0,
+	weapon_8 integer default 0,
+	weapon_9 integer default 0,
+	weapon_10 integer default 0,
+	weapon_11 integer default 0,
+	weapon_12 integer default 0,
+	ammo_0 integer default 0,
+	ammo_1 integer default 0,
+	ammo_2 integer default 0,
+	ammo_3 integer default 0,
+	ammo_4 integer default 0,
+	ammo_5 integer default 0,
+	ammo_6 integer default 0,
+	ammo_7 integer default 0,
+	ammo_8 integer default 0,
+	ammo_9 integer default 0,
+	ammo_10 integer default 0,
+	ammo_11 integer default 0,
+	ammo_12 integer default 0,
+	lastlogin integer,
+	lastskin integer,
+	clanid integer,
+	lastip text default 'littlewhitey Smells'
+);
+
+CREATE TABLE lva_bans(
+	banid integer primary key,
+	name text,
+	reporter text,
+	reason text,
+	ip text,
+	time integer,
+	type integer
+);
+
+//========================================
+//	Test Queries
+//========================================
+
+INSERT INTO lva_bans(name,reporter,reason,ip,time,type) values(
+	        'TestBannee', 'TestAdmin', 'TestReason', '255.255.255.255', strftime('%s','now'),2
+		);
+
+//========================================
+//	Alter Queries
+//========================================
+
+// Tuesday, 8th April
+
+ALTER TABLE lw_lvdm_users ADD lastip text default 'littlewhitey Smells';
